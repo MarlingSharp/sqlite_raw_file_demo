@@ -1,5 +1,4 @@
 import sqlite3
-from sqlite3 import Error
 
 DB_FILENAME = 'mydb.db'
 SQL_FILENAME = 'commands.sql'
@@ -13,8 +12,6 @@ def select_data(sql, criteria=()):
       cur.execute(sql, criteria)
 
       return cur.fetchall()
-  except Error as e:
-      print(e)
   finally:
       if conn:
           conn.close()
@@ -29,8 +26,6 @@ def execute_sql(sql, data=()):
         conn.commit()
 
         return cur.lastrowid
-    except Error as e:
-        print(e)
     finally:
         if conn:
             conn.close()
